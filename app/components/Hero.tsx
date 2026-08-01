@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 type HeroProps = {
   avatar: string;
@@ -32,9 +33,12 @@ export default function Hero({ avatar }: HeroProps) {
           </p>
 
           <div className="mt-10 flex gap-6">
-            <button className="rounded-full bg-yellow-400 px-10 py-5 font-bold text-black transition duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(250,204,21,0.4)]">
+            <Link
+              href="/games"
+              className="rounded-full bg-yellow-400 px-10 py-5 font-bold text-black transition duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(250,204,21,0.4)]"
+            >
               PLAY GAMES
-            </button>
+            </Link>
 
             <button className="rounded-full border border-white/20 px-10 py-5 transition duration-300 hover:border-yellow-400 hover:text-yellow-400">
               JOIN TEAM
