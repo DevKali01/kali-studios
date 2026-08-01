@@ -2,9 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
 
   const links = [
     { name: "Home", href: "/" },
@@ -16,7 +19,7 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 z-50 w-full border-b border-white/10 bg-black/40 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-8 py-5">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
 
         <Link href="/" className="flex items-center gap-4">
           <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-yellow-500/30">
@@ -36,7 +39,8 @@ export default function Navbar() {
           </div>
         </Link>
 
-        <div className="flex gap-8 text-sm uppercase tracking-wider">
+        {/* Desktop */}
+        <div className="hidden md:flex gap-8 text-sm uppercase tracking-wider">
           {links.map((link) => (
             <Link
               key={link.href}
@@ -52,6 +56,39 @@ export default function Navbar() {
           ))}
         </div>
 
+        {/* Mobile Button */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="md:hidden text-white transition hover:text-yellow-400"
+        >
+          {open ? <X size={30} /> : <Menu size={30} />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={`overflow-hidden transition-all duration-300 ${
+          open ? "max-h-96" : "max-h-0"
+        } md:hidden`}
+      >
+        <div className="border-t border-white/10 bg-[#0c0c0c]/95 backdrop-blur-xl px-6 py-6">
+
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setOpen(false)}
+              className={`block py-4 text-lg uppercase tracking-wider transition ${
+                pathname === link.href
+                  ? "text-yellow-400"
+                  : "text-white hover:text-yellow-400"
+              }`}
+            >
+              {link.name}
+            </Link>
+          ))}
+
+        </div>
       </div>
     </nav>
   );
