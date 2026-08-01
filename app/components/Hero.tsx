@@ -8,15 +8,15 @@ type HeroProps = {
 export default function Hero({ avatar }: HeroProps) {
   return (
     <section className="flex min-h-screen items-center bg-gradient-to-b from-[#070707] via-[#101010] to-black pt-24 text-white">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-20 px-8">
+      <div className="mx-auto flex max-w-7xl flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20 px-6 lg:px-8 text-center lg:text-left">
 
         {/* Left Side */}
         <div className="max-w-2xl">
-          <p className="mb-4 uppercase tracking-[8px] text-yellow-400">
+          <p className="mb-4 text-sm uppercase tracking-[6px] lg:tracking-[8px] text-yellow-400">
             Roblox Studio
           </p>
 
-          <h1 className="text-6xl font-black leading-tight xl:text-7xl">
+          <h1 className="text-5xl sm:text-6xl xl:text-7xl font-black leading-tight">
             BUILDING
             <br />
             EXPERIENCES
@@ -26,13 +26,13 @@ export default function Hero({ avatar }: HeroProps) {
             MILLIONS
           </h1>
 
-          <p className="mt-8 max-w-xl text-lg leading-8 text-gray-400">
+          <p className="mx-auto lg:mx-0 mt-8 max-w-xl text-base lg:text-lg leading-8 text-gray-400">
             We create premium Roblox experiences enjoyed by millions of players
             around the world. Our goal is to build polished, fun and memorable
             games that keep players coming back.
           </p>
 
-          <div className="mt-10 flex gap-6">
+          <div className="mt-10 flex flex-col sm:flex-row justify-center lg:justify-start gap-4 lg:gap-6">
             <Link
               href="/games"
               className="rounded-full bg-yellow-400 px-10 py-5 font-bold text-black transition duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(250,204,21,0.4)]"
