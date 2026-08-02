@@ -34,4 +34,26 @@ export const games = [
     name: "Paint ur Picture",
     placeId: 74132194648117,
   },
+
+  // NEW
+  {
+    id: "car-evolution",
+    name: "Car Evolution",
+    placeId: 122442249529876,
+  },
+  {
+    id: "italian-brainrot-murder",
+    name: "Italian Brainrot Murder",
+    placeId: 101365661668279,
+  },
+  {
+    id: "italian-brainrot-iq-test",
+    name: "Italian Brainrot IQ Test",
+    placeId: 119416542427370,
+  },
+  {
+    id: "invisible-slap-tower",
+    name: "Invisible Slap Tower",
+    placeId: 91220727693949,
+  },
 ];
