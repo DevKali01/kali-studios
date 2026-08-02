@@ -37,11 +37,6 @@ export const games = [
 
   // NEW
   {
-    id: "car-evolution",
-    name: "Car Evolution",
-    placeId: 122442249529876,
-  },
-  {
     id: "italian-brainrot-murder",
     name: "Italian Brainrot Murder",
     placeId: 101365661668279,
