@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "fts.rbxcdn.com",
       },
+      {
+        protocol: "https",
+        hostname: "t7.rbxcdn.com",
+      },
     ],
   },
 };

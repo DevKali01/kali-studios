@@ -1,7 +1,7 @@
 export const team = [
   {
     userId: 872947210,
-    username: "Mr Kali",
+    username: "Dev_Kali",
     role: "Founder & Creative Director",
     bio: "Building premium Roblox experiences enjoyed by millions.",
     verified: true,
