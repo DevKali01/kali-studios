@@ -72,7 +72,7 @@ export default async function Hero({ avatar }: HeroProps) {
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:40px_40px] opacity-[0.05]" />
 
             {/* Game Icon Glow */}
-            <div className="absolute left-1/2 top-1/2 h-[360px] w-[360px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-yellow-400/20 blur-[110px]" />
+            <div className="absolute left-1/2 top-1/2 h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-yellow-400/20 blur-[110px]" />
 
             {/* Game Icon */}
             <div className="absolute inset-0 flex items-center justify-center px-8 pb-28 pt-16">
@@ -80,13 +80,13 @@ export default async function Hero({ avatar }: HeroProps) {
                 <Image
                   src={featuredGame.thumbnail}
                   alt={featuredGame.name}
-                  width={390}
-                  height={390}
+                  width={340}
+                  height={340}
                   priority
-                  className="h-[390px] w-[390px] rounded-[28px] object-cover drop-shadow-[0_0_40px_rgba(250,204,21,0.35)] transition duration-500 hover:scale-105"
+                  className="h-[340px] w-[340px] rounded-[28px] object-cover drop-shadow-[0_0_40px_rgba(250,204,21,0.35)] transition duration-500 hover:scale-105"
                 />
               ) : (
-                <div className="flex h-[390px] w-[390px] items-center justify-center rounded-[28px] border border-yellow-400/20 bg-black/20 text-gray-500">
+                <div className="flex h-[340px] w-[340px] items-center justify-center rounded-[28px] border border-yellow-400/20 bg-black/20 text-gray-500">
                   Sail Your Boat
                 </div>
               )}
