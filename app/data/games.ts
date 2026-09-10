@@ -46,6 +46,11 @@ export const games = [
     name: "Italian Brainrot IQ Test",
     placeId: 119416542427370,
   },
+   {
+    id: "climb-for-eggs!",
+    name: "Climb for Eggs!",
+    placeId: 84376037812256,
+  },
   {
     id: "invisible-slap-tower",
     name: "Invisible Slap Tower",
