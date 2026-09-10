@@ -1,32 +1,13 @@
+import Image from "next/image";
 import Link from "next/link";
+import { getGame } from "../lib/roblox";
 
 type HeroProps = {
   avatar: string;
 };
 
-async function getGameIcon() {
-  try {
-    const response = await fetch(
-      "https://thumbnails.roblox.com/v1/games/icons?placeIds=82453659777192&size=512x512&format=Png&isCircular=false",
-      {
-        next: { revalidate: 3600 },
-      }
-    );
-
-    if (!response.ok) {
-      return null;
-    }
-
-    const data = await response.json();
-
-    return data?.data?.[0]?.imageUrl ?? null;
-  } catch {
-    return null;
-  }
-}
-
 export default async function Hero({ avatar }: HeroProps) {
-  const gameIcon = await getGameIcon();
+  const featuredGame = await getGame(82453659777192);
 
   return (
     <section className="flex min-h-screen items-center bg-gradient-to-b from-[#070707] via-[#101010] to-black pt-24 text-white">
@@ -62,9 +43,12 @@ export default async function Hero({ avatar }: HeroProps) {
               PLAY GAMES
             </Link>
 
-            <button className="rounded-full border border-white/20 px-10 py-5 transition duration-300 hover:border-yellow-400 hover:text-yellow-400">
+            <Link
+              href="/team"
+              className="rounded-full border border-white/20 px-10 py-5 transition duration-300 hover:border-yellow-400 hover:text-yellow-400"
+            >
               JOIN TEAM
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -91,11 +75,14 @@ export default async function Hero({ avatar }: HeroProps) {
             <div className="absolute left-1/2 top-1/2 h-[360px] w-[360px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-yellow-400/20 blur-[110px]" />
 
             {/* Game Icon */}
-            <div className="absolute inset-0 flex items-center justify-center px-8 pb-8 pt-12">
-              {gameIcon ? (
-                <img
-                  src={gameIcon}
-                  alt="Sail Your Boat"
+            <div className="absolute inset-0 flex items-center justify-center px-8 pb-28 pt-16">
+              {featuredGame.thumbnail ? (
+                <Image
+                  src={featuredGame.thumbnail}
+                  alt={featuredGame.name}
+                  width={390}
+                  height={390}
+                  priority
                   className="h-[390px] w-[390px] rounded-[28px] object-cover drop-shadow-[0_0_40px_rgba(250,204,21,0.35)] transition duration-500 hover:scale-105"
                 />
               ) : (
@@ -134,6 +121,7 @@ export default async function Hero({ avatar }: HeroProps) {
 
           </div>
         </div>
+
       </div>
     </section>
   );
