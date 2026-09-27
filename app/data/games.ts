@@ -59,9 +59,4 @@ export const games = [
     name: "Catch And Fight!",
     placeId: 130702543397860,
   },
-      {
-    id: "steal-an-egg",
-    name: "Steal An Egg",
-    placeId: 107778070777162,
-  },
 ];
