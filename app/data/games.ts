@@ -56,4 +56,14 @@ export const games = [
     name: "Invisible Slap Tower",
     placeId: 91220727693949,
   },
+    {
+    id: "car-evolution",
+    name: "Car Evolution",
+    placeId: 106735489487309,
+  },
+    {
+    id: "catch-and-fight",
+    name: "Catch And Fight!",
+    placeId: 130702543397860,
+  },
 ];
