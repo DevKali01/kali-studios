@@ -34,17 +34,10 @@ export const games = [
     name: "Paint ur Picture",
     placeId: 74132194648117,
   },
-
-  // NEW
   {
     id: "italian-brainrot-murder",
     name: "Italian Brainrot Murder",
     placeId: 101365661668279,
-  },
-  {
-    id: "italian-brainrot-iq-test",
-    name: "Italian Brainrot IQ Test",
-    placeId: 119416542427370,
   },
    {
     id: "climb-for-eggs!",
