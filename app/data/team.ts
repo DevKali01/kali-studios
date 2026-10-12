@@ -16,7 +16,7 @@ export const team = [
     userId: 3261976818,
     username: "Open Position",
     role: "UI / UX Designer",
-    bio: "Create beautiful interfaces for millions of players.",
+    bio: "Create beautiful interfaces",
   },
   {
     userId: 3261976818,
@@ -34,6 +34,6 @@ export const team = [
     userId: 3261976818,
     username: "Open Position",
     role: "Animator",
-    bio: "Create smooth animations for characters and enemies.",
+    bio: "Create smooth animations for everything.",
   },
 ];
