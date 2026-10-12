@@ -1,3 +1,4 @@
+
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -5,15 +6,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "tr.rbxcdn.com",
-      },
-      {
-        protocol: "https",
-        hostname: "fts.rbxcdn.com",
-      },
-      {
-        protocol: "https",
-        hostname: "t7.rbxcdn.com",
+        hostname: "**.rbxcdn.com",
       },
     ],
   },
