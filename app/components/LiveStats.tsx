@@ -108,7 +108,7 @@ export function useLiveStats(initialData: StatsResponse) {
 
     const interval = window.setInterval(() => {
       void refresh();
-    }, 5 * 60 * 1000);
+    }, 30 * 1000);
 
     const handleVisibilityChange = () => {
       if (document.visibilityState === "visible") {
