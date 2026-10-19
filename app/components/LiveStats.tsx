@@ -49,8 +49,14 @@ export function useLiveStats(initialData: StatsResponse) {
 
       const newData: StatsResponse = await response.json();
 
-      if (!Array.isArray(newData.games)) {
-        console.warn("Statistics response has invalid game data.");
+      if (
+        !Array.isArray(newData.games) ||
+        !newData.stats ||
+        typeof newData.stats.totalPlaying !== "number" ||
+        typeof newData.stats.totalVisits !== "number" ||
+        typeof newData.stats.totalGames !== "number"
+      ) {
+        console.warn("Statistics response has invalid data.");
         return;
       }
 
@@ -59,26 +65,45 @@ export function useLiveStats(initialData: StatsResponse) {
           previousData.games.map((game) => [game.id, game])
         );
 
-        const mergedGames = newData.games.map((game) => {
-          const previousGame = previousGames.get(game.id);
+        const receivedGames = new Map(
+          newData.games.map((game) => [game.id, game])
+        );
 
-          if (!previousGame) {
-            return game;
+        // Keep every previously known game, even if the API
+        // temporarily fails to return it.
+        const allGameIds = new Set([
+          ...previousGames.keys(),
+          ...receivedGames.keys(),
+        ]);
+
+        const mergedGames: Game[] = [];
+
+        for (const id of allGameIds) {
+          const previousGame = previousGames.get(id);
+          const newGame = receivedGames.get(id);
+
+          if (!newGame && previousGame) {
+            mergedGames.push(previousGame);
+            continue;
           }
 
-          return {
-            ...game,
-            thumbnail: game.thumbnail || previousGame.thumbnail,
-            playing:
-              game.playing === 0 && previousGame.playing > 0
-                ? previousGame.playing
-                : game.playing,
-            visits:
-              game.visits === 0 && previousGame.visits > 0
-                ? previousGame.visits
-                : game.visits,
-          };
-        });
+          if (newGame) {
+            mergedGames.push({
+              ...previousGame,
+              ...newGame,
+              thumbnail:
+                newGame.thumbnail || previousGame?.thumbnail || "",
+              playing:
+                newGame.playing === 0 && (previousGame?.playing ?? 0) > 0
+                  ? previousGame!.playing
+                  : newGame.playing,
+              visits:
+                newGame.visits === 0 && (previousGame?.visits ?? 0) > 0
+                  ? previousGame!.visits
+                  : newGame.visits,
+            });
+          }
+        }
 
         const sortedGames = sortGames(mergedGames);
 
@@ -93,7 +118,11 @@ export function useLiveStats(initialData: StatsResponse) {
               (sum, game) => sum + game.visits,
               0
             ),
-            totalGames: sortedGames.length,
+            totalGames: Math.max(
+              previousData.stats.totalGames,
+              newData.stats.totalGames,
+              sortedGames.length
+            ),
           },
           updatedAt: newData.updatedAt,
         };

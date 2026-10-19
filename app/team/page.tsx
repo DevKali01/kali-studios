@@ -1,3 +1,4 @@
+
 import TeamCard from "../components/TeamCard";
 import { team } from "../data/team";
 import { getAvatar } from "../lib/roblox";
@@ -29,9 +30,9 @@ export default async function TeamPage() {
         </div>
 
         <div className="flex flex-wrap justify-center gap-8">
-          {members.map((member) => (
+          {members.map((member, index) => (
             <div
-              key={member.userId}
+              key={`${member.userId}-${index}`}
               className="w-full max-w-[380px] sm:w-[360px]"
             >
               <TeamCard
