@@ -1,3 +1,8 @@
+
+"use client";
+
+import { useLiveStats } from "./LiveStats";
+
 type StatsProps = {
   stats: {
     totalPlaying: number;
@@ -7,20 +12,28 @@ type StatsProps = {
 };
 
 export default function Stats({ stats }: StatsProps) {
+  const liveData = useLiveStats({
+    games: [],
+    stats,
+    updatedAt: new Date().toISOString(),
+  });
+
+  const liveStats = liveData.stats;
+
   const items = [
     {
       id: "live",
-      value: stats.totalPlaying.toLocaleString(),
+      value: liveStats.totalPlaying.toLocaleString(),
       label: "Players Online",
     },
     {
       id: "visits",
-      value: `${(stats.totalVisits / 1_000_000).toFixed(1)}M`,
+      value: `${(liveStats.totalVisits / 1_000_000).toFixed(1)}M`,
       label: "Total Visits",
     },
     {
       id: "games",
-      value: stats.totalGames.toString(),
+      value: liveStats.totalGames.toString(),
       label: "Experiences",
     },
   ];
