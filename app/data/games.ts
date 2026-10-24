@@ -64,4 +64,9 @@ export const games = [
     name: "Break and Climb for Eggs!",
     placeId: 75964918740018,
   },
+        {
+    id: "fish-and-steal-an-egg",
+    name: "Fish and Steal an Egg",
+    placeId: 115503306282680,
+  },
 ];
